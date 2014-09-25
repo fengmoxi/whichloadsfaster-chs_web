@@ -3,6 +3,7 @@
 
 此网站汉化whichloadsfaster.com而得，并少许修改，随后卖了点萌···
 
+演示：http://wlf.flydev.cc
 
 小笨猫
 www.fengmx.com
