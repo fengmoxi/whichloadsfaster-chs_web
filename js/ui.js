@@ -471,7 +471,7 @@ $(window).ready(function (){
         open: function () {
             $('#share textarea').val(current_test_url);
         },
-        buttons: { 'OK': function () {$(this).dialog('close')} }
+        buttons: { '好哒': function () {$(this).dialog('close')} }
     });
     $('#share-link').click(function (){$('#share').dialog('open');});
 
