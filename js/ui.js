@@ -96,8 +96,8 @@ comparison_txt = function (benefit) {
         if (left_greater) return '右边比左边快' + percent + '<small>%</small>';
         else return '左边比右边快' + percent + '<small>%</small>';
     } else {
-        if (left_greater) return '左边比右边快' + b + ' 倍';
-        else return '左边比右边快' + b + ' 倍';
+        if (left_greater) return '左边比右边快' + b + '倍';
+        else return '左边比右边快' + b + '倍';
     }
 }
 
