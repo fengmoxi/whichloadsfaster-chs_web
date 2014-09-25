@@ -1,0 +1,233 @@
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <title>比比谁更快 - Powered By LiveFace</title>
+
+    <link type="text/css" href="css/screen.css" rel="stylesheet" /> 
+    <link type="text/css" href="css/sunny/jquery-ui-1.8.custom.css" rel="stylesheet" />  
+
+    <!--JAVASCRIPT-->
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.url.js"></script>
+    <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
+    <script type="text/javascript" src="js/supersleight.plugin.js"></script>
+    <!--END JAVASCRIPT (the above section gets replaced with all.js in production)-->
+
+</head>
+<!--[if !IE]>--><body class="W3C"><!--<![endif]-->
+<!--[if IE 8]><body class="IE IE8 IE78 IE678"><![endif]-->
+<!--[if IE 7]><body class="IE IE7 IE67 IE78 IE567 IE678"><![endif]-->
+<!--[if IE 6]><body class="IE IE6 IE56 IE67 IE567 IE678"><![endif]-->
+<!--[if IE 5]><body class="IE IE5 IE56 IE567"><![endif]-->
+
+<noscript>
+<div id="noscript" class="ui-widget-overlay">
+<h1>
+This site is a JavaScript application. Please enable JavaScript or use a browser that supports it.
+</h1>
+</div>
+</noscript>
+
+<div id="header" class="ui-widget-content">
+
+    <div id="features">
+        <div id="logo">比比谁更快</div>
+        <a id="about-link" href="#">关于</a>
+        <a id="settings-link" href="#">设置</a>
+
+        <div id="features-divider">高级功能:</div>
+        <a id="repeat" href="#">多次测试</a>
+        <a id="race" href="#">连续多页</a>
+        <a id="data" href="#">测试记录</a>
+        <div id="timeout"></div>
+    </div>
+
+    <div id="gobar">
+    <div style="left:0;">
+
+        <input id="url0" type="text" class="text ui-corner-all" value="" tabindex=1 />
+
+    </div>
+    <div style="right: 0;">
+
+        <input id="url1" type="text" class="text ui-corner-all" value="" tabindex=2 />
+        <button id="go" tabindex=3 >开始测试！</button>
+
+    </div>
+    </div>
+
+</div>
+
+<div id="xfactor" class="overlay"><div>&nbsp;</div> 
+<span id="xfactor-links">
+<button id="share-link">将本次测试分享给好友!</button>
+</span>
+</div>
+<div id="average" class="overlay"><div>&nbsp; </div></div>
+
+<div class="frame" id="div0" style="float:left">
+    <div class="frameblocker"></div>
+
+    <button id="time0" class="load_time" tabindex=0></button>
+    <iframe id="frame0" tabindex=-1>one</iframe>
+
+</div>
+
+<div class="frame" id="div1" style="float:right">
+    <div class="frameblocker"></div>
+
+    <button id="time1" class="load_time"></button>
+    <iframe id="frame1" tabindex=-1>two</iframe>
+
+</div>
+
+<div id="repeat-form" style="display:none;">
+    <p>
+        亲爱哒，奴家测试几次比较好捏？
+    </p>
+
+    <ul id="times">
+        <li>
+            <input type="radio" name="times" id="5times" checked="checked" value="5" /><label for="5times">5次好嘞</label>
+        </li>
+        <li>
+            <input type="radio" name="times" id="10times" value="10" /><label for="10times">还是10次吧</label>
+        </li>
+        <li>
+            <input type="radio" name="times" id="100times" value="100" /><label for="100times">哇呀呀，还是100次吧</label>
+        </li>
+        <li>
+            <input type="radio" name="times" id="custom" value="custom" /><label for="custom">嗯哼，自定义吧</label>
+            <input type="text" id="custom_times" class="text ui-widget-content ui-corner-all" style="width: 40px;"/>
+            <p id="custom_times_error"></p>
+        </li>
+    </ul>
+    <p>
+        过一会儿你就能看到那个网页平均加载最快啦~\(≧▽≦)/~
+    </p>
+</div>
+
+
+<div id="race-form" style="display:none;">
+    <p>
+        连续加载几个页面，比比那个网站综合速度最快！
+    </p>
+    <table>
+    <tr>
+        <th>左边的URL君们：</th>
+        <th>右边的URL君们：</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="l0" class="race_url text ui-widget-content ui-corner-all" /></td>
+        <td><input type="text" id="r0" class="race_url text ui-widget-content ui-corner-all" /></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="l1" class="race_url text ui-widget-content ui-corner-all" /></td>
+        <td><input type="text" id="r1" class="race_url text ui-widget-content ui-corner-all" /></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="l2" class="race_url text ui-widget-content ui-corner-all" /></td>
+        <td><input type="text" id="r2" class="race_url text ui-widget-content ui-corner-all" /></td>
+    </tr>
+    </table>
+</div>
+
+<div id="data-form" style="display: none;">
+    <p>
+        亲爱的，下面那个小框框就是你测试过的网页们，他们是CSV格式的哦！
+    </p>
+    <textarea class="textarea ui-corner-all"></textarea>
+</div>
+
+
+
+<div id="framebuster" style="display: none;">
+    <p>
+        It looks like one of the websites you're trying to load
+        <span id="framebuster_name"></span>
+        does not want their content to be displayed inside an
+        iframe, and is actively trying to bust itself out.
+    </p>
+    <p>
+        Because of this, it's going to be hard to get
+        an accurate comparison.
+        Please either speak to the authors of the website or try
+        a different matchup.
+    </p>
+</div>
+
+<div id="share" style="display: none;">
+    <p>
+        Copy this URL to share this test with someone else:
+    </p>
+    <p>
+        <textarea class="text ui-widget-content ui-corner-all"></textarea>
+    </p>
+</div>
+
+
+
+<div id="settings" style="display: none;">
+
+    <dl>
+        <dt>页面加载模式</dt>
+        <dd>
+            <div id="serial_parallel">
+            <input id="parallel" value="parallel" name="serial" type="radio" checked="checked" /> <label for="parallel">同时加载 (默认)</label>
+            <input id="serial" value="serial" name="serial" type="radio" /> <label for="serial">依次加载</label>
+            </div>
+        </dt>
+            <p>温馨提示：依次加载左右两个页面，测试结果误差较大</p>
+        </dd>
+
+    </dl>
+</div>
+
+<div id="about" style="display: none; ">
+    <a style="position: absolute; top: 0; right: 0; z-index: 10000;" href="http://github.com/fengmoxi/whichloadsfaster-chs_web"><img src="img/github_ribbon.png" alt="从GitHub同步源代码" /></a>
+
+    <h2>比比谁更快 是啥玩意?</h2>
+    <p style="margin-right:2em;">
+    <b>比比谁更快</b>是著名网站测速站<a href="http://whichloadsfaster.com/">whichloadsfaster</a> 的汉化版本，感谢原作者的无私奉献。<br>获取源代码：<a href="http://github.com/ryanwitt/whichloadsfaster">原版开源代码</a>，<a href="http://github.com/fengmoxi/whichloadsfaster-chs_web">本版开源代码</a>
+    </p>
+
+    <h2>比比谁更快 咋用来着?</h2>
+    <p>
+    丫的，装傻是不好滴！那两地址栏看到没呀亲！输进去点“开始测试”不就OK啦~\(≧▽≦)/~
+    </p>
+
+    <h2>比比谁更快 是哪个折腾出来哒?</h2>
+    <p>
+    <b>比比谁更快</b>由<a href="http://whichloadsfaster.com">whichloadsfaster</a>汉化而得。whichloadsfaster由<a href="http://onecreativeblog.com/">Ryan Witt</a>和他的小伙伴们编写。<br><br>汉化者：<a href="http://www.fengmx.com">风漠兮</a>@<a href="http://bbs.flydev.cc">动次科技</a>。
+    </p>
+</div>
+
+<script type="text/javascript">
+var clicky = { log: function(){ return; }, goal: function(){ return; }};
+var clicky_site_id = 228919;
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = ( document.location.protocol == 'https:' ? 'https://static.getclicky.com' : 'http://static.getclicky.com' ) + '/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="http://in.getclicky.com/228919ns.gif" /></p></noscript>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17288484-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
