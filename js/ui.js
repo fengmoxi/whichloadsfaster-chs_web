@@ -54,8 +54,8 @@ load_frame = function (i, j) {
     if (repeat_total) {
         $('#xfactor div').html(
             '<p> <div id="progress"></div> </p>' +
-            '<p> ' + (repeat_total-repeat) + 
-            ' out of ' + repeat_total+ '</p>'
+            '<p> 正在进行第' + (repeat_total-repeat) + 
+            '次测试<br>还剩' + repeat+ '次，共' + repeat_total + '次</p>'
         );
         $('#progress').progressbar({value: 
             100 * (repeat_total-repeat) / repeat_total
