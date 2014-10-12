@@ -93,11 +93,11 @@ comparison_txt = function (benefit) {
     if (percent < 5) {
         return '势均力敌！';
     } else if (benefit < 2)  {
-        if (left_greater) return '右边比左边慢' + percent + '<small>%</small>';
-        else return '左边比右边慢' + percent + '<small>%</small>';
+        if (left_greater) return '右边比左边快' + percent + '<small>%</small>';
+        else return '左边比右边快' + percent + '<small>%</small>';
     } else {
-        if (left_greater) return '左边比右边慢' + b + '倍';
-        else return '左边比右边慢' + b + '倍';
+        if (left_greater) return '右边比左边快' + b + '倍';
+        else return '左边比右边快' + b + '倍';
     }
 }
 
